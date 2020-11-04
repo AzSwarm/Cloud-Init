@@ -11,6 +11,8 @@ packages:
   - curl
   - gnupg-agent
   - software-properties-common
+  - lsb-release
+  - gnupg
 
 runcmd:
   # Install Docker CE  
@@ -27,7 +29,7 @@ runcmd:
   - add-apt-repository universe
   # Install Powershell
   - apt-get install -y powershell-lts
-  # Install Powershell
-  - apt-get install -y azure-cli
+  # Install Azure Cli
+  - curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
   # Initialize a swarm manager
   - docker swarm init --advertise-addr eth0:2377
