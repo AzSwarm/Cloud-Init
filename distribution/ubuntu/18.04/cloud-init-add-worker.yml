@@ -11,7 +11,8 @@ packages:
   - curl
   - gnupg-agent
   - software-properties-common
-  - wget
+  - lsb-release
+  - gnupg
 
 runcmd:
   # Install Docker CE  
@@ -28,5 +29,9 @@ runcmd:
   - add-apt-repository universe
   # Install Powershell
   - apt-get install -y powershell-lts
-
-  
+  # Install Azure Cli
+  - curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+  # Save Docker Swarm Keys inside Azure Key Vault
+  - az login --identity -u /subscriptions/<subscriptionId>/resourcegroups/<resourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<userAssignedIdentityName> --allow-no-subscriptions
+  # Initialize a Swarm Worker
+  - docker swarm join --token "$(az keyvault secret show --name "worker-key" --vault-name <KeyVaultName> --query value --output tsv)" <swarmManagerIp>:2377
