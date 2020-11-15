@@ -1,5 +1,5 @@
 # Cloud-Init
-Cloud-Init files to setup a Docker Swarm cluster in Microsoft Azure
+Cloud-Init files to setup a Docker Swarm cluster in Microsoft Azure.
 
 ## Requirements 
 In order to use the cloud-init files you will need to do the following:
@@ -12,6 +12,16 @@ In order to use the cloud-init files you will need to do the following:
 The Key Vault is used to store the Docker Swarm Join token for the managers and workers using the User-Assigned Managed Identity. 
 
 To understand how to assign this permission please check the following Microsoft document [Link](https://docs.microsoft.com/en-us/azure/key-vault/general/assign-access-policy-portal)
+
+## How it Works?
+
+During the first boot the cloud-init files will do the following:
+
+* Add Docker repository
+* Add and Install PowerShell.
+* Add and Install Azure CLI.
+* Initialize Docker Swarm Manager and use an Azure User-assigned Identity to authenticate to Azure and save the Swarm Manager/Worker token inside the Azure Key Vault.
+* Adding Docker Swarm Manger/Worker and use an Azure User-assigned Identity to authenticate to Azure and get the Swarm Manager/Worker token inside the Azure Key Vaul to join the VM to the cluster.
 
 ## Deploy Docker Swarm Manager.
 
@@ -59,5 +69,3 @@ In order to add a Docker Swarm Worker please select the **cloud-init-add-worker.
 After replacing the values you can create a new VM using Azure CLI and include the **cloud-init-add-worker.yml** file. 
 
 Please check this Microsoft document for an example [Link](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/using-cloud-init#deploying-a-cloud-init-enabled-virtual-machine).
-
-
