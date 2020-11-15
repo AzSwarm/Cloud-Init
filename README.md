@@ -30,10 +30,34 @@ Please check this Microsoft document for an example [Link](https://docs.microsof
 
 ## Adding a Docker Swarm Manager.
 
-Pending
+In order to add a Docker Swarm Manager please select the **cloud-init-add-manager.yml** file for your distribution and replace the following values:
+
+| Key                       |  
+|---------------------------|
+| subscriptionId            |   
+| resourceGroupName         |   
+| userAssignedIdentityName  |   
+| keyVaultName              |
+| swarmManagerIp            | 
+
+After replacing the values you can create a new VM using Azure CLI and include the **cloud-init-add-manager.yml** file. 
+
+Please check this Microsoft document for an example [Link](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/using-cloud-init#deploying-a-cloud-init-enabled-virtual-machine).
 
 ## Adding a Docker Swarm Worker.
 
-Pending
+In order to add a Docker Swarm Worker please select the **cloud-init-add-worker.yml** file for your distribution and replace the following values:
+
+| Key                       |  
+|---------------------------|
+| subscriptionId            |   
+| resourceGroupName         |   
+| userAssignedIdentityName  |   
+| keyVaultName              |
+| swarmManagerIp            | 
+
+After replacing the values you can create a new VM using Azure CLI and include the **cloud-init-add-worker.yml** file. 
+
+Please check this Microsoft document for an example [Link](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/using-cloud-init#deploying-a-cloud-init-enabled-virtual-machine).
 
 
