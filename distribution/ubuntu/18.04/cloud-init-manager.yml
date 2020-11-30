@@ -35,5 +35,5 @@ runcmd:
   - docker swarm init --advertise-addr eth0:2377
   # Save Docker Swarm Keys inside Azure Key Vault
   - az login --identity -u /subscriptions/<subscriptionId>/resourcegroups/<resourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<userAssignedIdentityName> --allow-no-subscriptions
-  - az keyvault secret set --vault-name <KeyVaultName> --name "manager-key" --value "$(docker swarm join-token manager --quiet)"
-  - az keyvault secret set --vault-name <KeyVaultName> --name "worker-key" --value "$(docker swarm join-token worker --quiet)"
+  - az keyvault secret set --vault-name <keyVaultName> --name "manager-key" --value "$(docker swarm join-token manager --quiet)"
+  - az keyvault secret set --vault-name <keyVaultName> --name "worker-key" --value "$(docker swarm join-token worker --quiet)"
